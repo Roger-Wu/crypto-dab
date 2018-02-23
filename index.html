@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CryptoRoger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101090572-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-101090572-3');
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <!-- Material Design for Bootstrap -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+    .name-block {
+      color: rgba(255, 255, 255, 0.625);
+    }
+    .photo-block:hover .name-block {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="text-center">
+    <h2 style="margin: 15px; font-family: Helvetica;">{{ title }}</h2>
+    <div v-cloak class="card text-center" style="width: 256px; margin: 0 auto; padding: 0">
+      <a :href="person.fbUrl" target="_blank">
+        <div class="photo-block position-relative">
+          <img width="256" height="256" :src="person.image">
+          <div class="name-block position-absolute w-100 text-center align-middle" style="bottom: 0; ">
+            <h4 class="mt-2 mb-0">{{ person.name }}</h4>
+            <h6 class="mt-0 mb-2">({{ person.alternateName }})</h6>
+          </div>
+        </div>
+      </a>
+
+      <div style="padding: 20px 10px;">
+        <h6>前一贊助者:
+          <a :href="'https://etherscan.io/address/' + owner">{{ shortOwner }}</a>
+        </h6>
+        <h6>目前價格: {{ priceInEth }} ETH</h6>
+        <h6>下個價格: {{ nextPriceInEth }} ETH</h6>
+        <button @click="buy" class="btn btn-success active w-75 mx-auto">贊助 {{ priceInEth }} ETH</button>
+      </div>
+    </div>
+    <div class="mt-5 text-secondary">
+      <h6 v-if="!isMetamaskInstalled">請
+        <a href="https://metamask.io/" target="_blank">安裝 MetaMask</a> 以完整體驗此遊戲</h6>
+      <h6>智能合約地址:
+        <a :href="'https://etherscan.io/address/' + contractAddress">{{ shortContractAddress }}</a>
+      </h6>
+      <h6>關於此遊戲的規則請參閱
+        <a href="https://roger-wu.github.io/ponzi-scheme-games/" target="_blank">這篇文章</a>
+      </h6>
+    </div>
+  </div>
+
+  <!-- Material Design for Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+  <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.0/dist/ethjs.min.js"></script>
+
+  <script src="src/index.js"></script>
+</body>
+
+</html>
