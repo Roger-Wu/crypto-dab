@@ -9,7 +9,6 @@ var app = new Vue({
   el: '#app',
   data: {
     title: 'Crypto dAb',
-
     person: {
       name: '葛如鈞',
       alternateName: '寶博士',
