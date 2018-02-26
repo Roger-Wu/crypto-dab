@@ -9,6 +9,7 @@ var app = new Vue({
   el: '#app',
   data: {
     title: 'Crypto dAb',
+    description: '加密貓玩膩了嗎？來玩加密寶博士。來吧！用以太幣認養寶博士，每次都將贈送一萬枚寶博士幣。送完為止喔！',
     person: {
       name: '葛如鈞',
       alternateName: '寶博士',
