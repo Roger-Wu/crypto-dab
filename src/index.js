@@ -25,6 +25,7 @@ var app = new Vue({
     nextPrice: 0,
     accountAddress: '',
     metamaskMsg: '請安裝並登入 MetaMask 以完整體驗此遊戲',
+    gasPrice: 5000000000,
   },
   computed: {
     shortContractAddress: function() {
@@ -66,7 +67,7 @@ var app = new Vue({
       });
     },
     buy: function () {
-      this.itemTokenContract.buy(this.person.itemId, { from: this.accountAddress, value: this.price, gasPrice: 5000000000}).catch((error) => {
+      this.itemTokenContract.buy(this.person.itemId, { from: this.accountAddress, value: this.price, gasPrice: this.gasPrice}).catch((error) => {
         window.alert(this.metamaskMsg);
         console.log(error);
       }).then((result) => {
