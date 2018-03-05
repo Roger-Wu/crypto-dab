@@ -66,7 +66,7 @@ var app = new Vue({
       });
     },
     buy: function () {
-      this.itemTokenContract.buy(this.person.itemId, { from: this.accountAddress, value: this.price, gasPrice: 1000000000}).catch((error) => {
+      this.itemTokenContract.buy(this.person.itemId, { from: this.accountAddress, value: this.price, gasPrice: 5000000000}).catch((error) => {
         window.alert(this.metamaskMsg);
         console.log(error);
       }).then((result) => {
